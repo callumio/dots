@@ -89,8 +89,8 @@
       bind = $mainMode SHIFT, r, exec, hyprctl reload
 
       # Program Binds
-      bind = $mainMod, return, exec, alacritty
-      bind = $mainMod SHIFT, return, exec, [float; pin] alacritty
+      bind = $mainMod, return, exec, alacritty -e tmux new -A -s main
+      bind = $mainMod SHIFT, return, exec, [float; pin] alacritty -e tmux new -A -s main
       bind = $mainMod SHIFT, b, exec, firefox
       bind = $mainMod, b, workspace, name:web
       bind = $mainMod, n, workspace, name:chat

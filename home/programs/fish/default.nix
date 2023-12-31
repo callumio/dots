@@ -4,8 +4,20 @@
 
     interactiveShellInit = ''
       set fish_greeting
+      trap __trap_exit_tmux EXIT
     '';
+
     shellAliases = { v = "nvim"; };
+
+    functions = {
+      __trap_exit_tmux = {
+        body = ''
+          test (tmux list-windows | wc -l) = 1 || exit
+          test (tmux list-panes | wc -l) = 1 || exit
+          tmux switch-client -t main
+        '';
+      };
+    };
 
     plugins = with pkgs.fishPlugins; [
       {

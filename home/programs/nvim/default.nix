@@ -1,12 +1,18 @@
 { config, inputs, pkgs, ... }: {
   programs.neovim = let
+    leaders = ''
+      vim.g.mapleader = ' '
+      vim.g.maplocalleader = ' '
+    '';
     toLua = str: ''
       lua << EOF
+      ${leaders}
       ${str}
       EOF
     '';
     toLuaFile = file: ''
       lua << EOF
+      ${leaders}
       ${builtins.readFile file}
       EOF
     '';
@@ -39,6 +45,10 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+
+    extraLuaConfig = ''
+      ${builtins.readFile ./options.lua}
+    '';
 
     plugins = with pkgs.vimPlugins; [
       {
@@ -102,7 +112,19 @@
         config = toLua "require('oil').setup()";
       }
 
+      {
+        plugin = zen-mode-nvim;
+        config = toLuaFile ./plugin/zen.lua;
+      }
+      twilight-nvim
+
       nvim-web-devicons
+
+      {
+        plugin = undotree;
+        config =
+          toLua "vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)";
+      }
 
       {
         plugin = nvim-treesitter.withPlugins (p: [
@@ -141,8 +163,5 @@
       vim-nix
     ];
 
-    extraLuaConfig = ''
-      ${builtins.readFile ./options.lua}
-    '';
   };
 }

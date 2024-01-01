@@ -1,8 +1,4 @@
-{ config, inputs, pkgs, ... }:
-let
-  proj_dirs =
-    "~/repos/github.com/callumio ~/repos/projects.cs.nott.ac.uk/psycl6";
-in {
+{ config, inputs, pkgs, ... }: {
   programs.tmux = {
     enable = true;
     shortcut = "x";
@@ -46,7 +42,7 @@ in {
       bind \\ split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
 
-      bind-key -r f run-shell "tmux neww tmux-sessionizer ${proj_dirs}"
+      bind-key -r f run-shell "tmux neww tmux-sessionizer"
 
       bind -r k select-pane -U
       bind -r j select-pane -D
@@ -58,14 +54,9 @@ in {
   home.packages = [
     (pkgs.writeShellApplication {
       name = "tmux-sessionizer";
-      runtimeInputs = [ pkgs.tmux ];
+      runtimeInputs = [ pkgs.tmux pkgs.fd pkgs.ghq ];
       text = ''
-        if [[ $# -eq 0 ]]; then
-          exit
-        else
-          # shellcheck disable=SC2068
-          selected=$(find $@ -mindepth 1 -maxdepth 1 -type d | fzf)
-        fi
+        selected=$(ghq list -p | fzf)
 
         if [[ -z $selected ]]; then
           exit 0

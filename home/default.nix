@@ -36,6 +36,8 @@
     slurp
     grim
     clang-tools
+    ghq
+    gst
   ];
 
   home.stateVersion = "23.11";

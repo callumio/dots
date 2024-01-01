@@ -29,6 +29,7 @@
       init = { defaultBranch = "main"; };
 
       push = { autoSetupRemote = true; };
+      ghq = { root = "~/repos"; };
     };
 
     diff-so-fancy.enable = true;

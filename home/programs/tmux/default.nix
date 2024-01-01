@@ -43,6 +43,7 @@
       bind c new-window -c "#{pane_current_path}"
 
       bind-key -r f run-shell "tmux neww tmux-sessionizer"
+      bind-key -r m run-shell "tmux switch-client -t main"
 
       bind -r k select-pane -U
       bind -r j select-pane -D
@@ -56,25 +57,7 @@
       name = "tmux-sessionizer";
       runtimeInputs = [ pkgs.tmux pkgs.fd pkgs.ghq ];
       text = ''
-        selected=$(ghq list -p | fzf)
-
-        if [[ -z $selected ]]; then
-          exit 0
-        fi
-
-        selected_name=$(basename "$selected" | tr . _)
-        tmux_running=$(pgrep tmux)
-
-        if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-          tmux new-session -s "$selected_name" -c "$selected"
-          exit 0
-        fi
-
-        if ! tmux has-session -t="$selected_name" 2>/dev/null; then
-          tmux new-session -ds "$selected_name" -c "$selected"
-        fi
-
-        tmux switch-client -t "$selected_name"
+        ${builtins.readFile ./tmux-sessionizer.sh}
       '';
     })
   ];

@@ -5,6 +5,7 @@ local on_attach = function(_, bufnr)
 
 	bufmap("K", vim.lsp.buf.hover)
 	bufmap("gd", vim.lsp.buf.definition)
+	bufmap("gD", vim.lsp.buf.declaration)
 	bufmap("<leader>vsw", require("telescope.builtin").lsp_dynamic_workspace_symbols)
 	bufmap("<leader>vsd", require("telescope.builtin").lsp_document_symbols)
 	bufmap("<leader>vd", require("telescope.builtin").diagnostics)

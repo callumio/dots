@@ -36,10 +36,12 @@
       dwindle {
           pseudotile = yes
           preserve_split = yes
+          no_gaps_when_only = 1
       }
 
       master {
           new_is_master = true
+          no_gaps_when_only = 1
       }
 
       gestures {

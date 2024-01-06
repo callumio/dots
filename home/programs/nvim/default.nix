@@ -22,22 +22,44 @@
     package = pkgs.neovim-nightly;
 
     extraPackages = with pkgs; [
-      rnix-lsp
-      lua-language-server
+      # Rust
       rust-analyzer
+      cargo
+      rustc
+
+      # Go
       gopls
+
+      # Typescript
       nodePackages.typescript
       nodePackages.typescript-language-server
+
+      # Python
       nodePackages.pyright
-      clang-tools
+
+      # Util
       ripgrep
       fzf
-      statix
+
+      # C-Family
+      clang-tools
+
+      # Shell
       shellcheck
       shfmt
+
+      # Lua
+      lua-language-server
       selene
       stylua
+
+      # Nix
+      rnix-lsp
       nixfmt
+      statix
+
+      # LLM
+      ollama
     ];
 
     defaultEditor = true;

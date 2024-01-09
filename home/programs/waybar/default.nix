@@ -5,7 +5,7 @@
       hyprlandSupport = true;
       swaySupport = false;
     };
-    systemd.enable = true;
+    systemd.enable = false;
     settings = {
       mainBar = {
         layer = "top";

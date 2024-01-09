@@ -54,10 +54,10 @@
       }
 
       input {
-          kb_layout = gb
-          kb_variant =
+          kb_layout = gb,us
+          kb_variant = ,workman
           kb_model =
-          kb_options =
+          kb_options = ctrl:nocaps, grp:alt_shift_toggle
           kb_rules =
 
           follow_mouse = 1
@@ -162,9 +162,7 @@
       bind = SHIFT, Print, exec, grim -g "$(slurp)" - | wl-copy
       bind = , Print, exec, grim - | wl-copy
 
-      exec-once = webcord -m
-      exec-once = nm-applet --indicator
-      exec-once = blueman-tray
+      exec = blueman-tray
       exec-once = mullvad-gui
       exec = pkill wpaperd & sleep 0.5 && wpaperd
       exec = pkill waybar & sleep 0.5 && waybar

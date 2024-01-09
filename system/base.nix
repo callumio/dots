@@ -25,6 +25,7 @@
     printing.enable = true;
     blueman.enable = true;
 
+    udisks2.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;

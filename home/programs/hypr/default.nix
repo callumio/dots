@@ -162,11 +162,12 @@
       bind = SHIFT, Print, exec, grim -g "$(slurp)" - | wl-copy
       bind = , Print, exec, grim - | wl-copy
 
-      exec = blueman-tray
-      exec-once = mullvad-gui
       exec = pkill wpaperd & sleep 0.5 && wpaperd
       exec = pkill waybar & sleep 0.5 && waybar
       exec = pkill mako & sleep 0.5 && mako
+      exec = blueman-tray
+      exec-once = mullvad-gui
+      exec-once = udiskie -t
     '';
 
   };

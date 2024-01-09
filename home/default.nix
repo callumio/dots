@@ -39,6 +39,7 @@
     clang
     ghq
     gst
+    udiskie
   ];
 
   home.stateVersion = "23.11";

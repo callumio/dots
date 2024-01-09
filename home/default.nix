@@ -36,6 +36,7 @@
     slurp
     grim
     clang-tools
+    clang
     ghq
     gst
   ];

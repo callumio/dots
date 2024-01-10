@@ -40,6 +40,8 @@
     ghq
     gst
     udiskie
+    cargo
+    rustc
   ];
 
   home.stateVersion = "23.11";

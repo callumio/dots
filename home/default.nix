@@ -41,7 +41,9 @@
     gst
     udiskie
     cargo
+    cargo-watch
     rustc
+    xh
   ];
 
   home.stateVersion = "23.11";

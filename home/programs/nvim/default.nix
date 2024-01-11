@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }: {
+{ config, inputs, pkgs, lib, ... }: {
   programs.neovim = let
     leaders = ''
       vim.g.mapleader = ' '
@@ -16,6 +16,20 @@
       ${builtins.readFile file}
       EOF
     '';
+
+    fromGit = ref: rev: repo:
+      pkgs.vimUtils.buildVimPlugin {
+        pname = "${lib.strings.sanitizeDerivationName repo}";
+        version = ref;
+        src = builtins.fetchGit {
+          url = "https://github.com/${repo}.git";
+          inherit ref;
+          inherit rev;
+        };
+      };
+
+    # always installs latest version
+    pluginGit = fromGit "HEAD";
   in {
     enable = true;
 
@@ -98,6 +112,18 @@
       {
         plugin = telescope-nvim;
         config = toLuaFile ./plugin/telescope.lua;
+      }
+
+      {
+        plugin = pluginGit "951b163e55ce7639eb320c450bde9283c4fe968b"
+          "laytan/cloak.nvim";
+        config = toLuaFile ./plugin/cloak.lua;
+      }
+
+      {
+        plugin = pluginGit "41ad952c8269fa7aa3a4b8a5abb44541cb628313"
+          "David-Kunz/gen.nvim";
+        config = toLuaFile ./plugin/gen.lua;
       }
 
       telescope-fzf-native-nvim

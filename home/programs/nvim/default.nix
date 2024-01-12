@@ -126,6 +126,15 @@
         config = toLuaFile ./plugin/gen.lua;
       }
 
+      {
+        plugin = nvim-dap;
+        config = toLuaFile ./plugin/debugger.lua;
+      }
+
+      nvim-dap-ui
+      telescope-dap-nvim
+      nvim-dap-virtual-text
+
       telescope-fzf-native-nvim
 
       cmp_luasnip

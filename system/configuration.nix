@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
     ./network.nix
     ./packages.nix
     ./base.nix

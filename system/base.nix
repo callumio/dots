@@ -14,16 +14,9 @@
 
   virtualisation.libvirtd.enable = true;
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-    settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
-  };
-
   services = {
     dbus.enable = true;
     printing.enable = true;
-    blueman.enable = true;
 
     udisks2.enable = true;
     pipewire = {
@@ -34,17 +27,6 @@
     };
 
     thermald.enable = true;
-    power-profiles-daemon.enable = false;
-    system76-scheduler.settings.cfsProfiles.enable = true;
-    tlp = {
-      enable = true;
-      settings = {
-        CPU_BOOST_ON_AC = 1;
-        CPU_BOOST_ON_BAT = 0;
-        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      };
-    };
     greetd = {
       enable = true;
       settings = {

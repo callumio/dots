@@ -38,6 +38,7 @@
           specialArgs = { inherit inputs system; };
           modules = [
             ./system/configuration.nix
+            ./system/artemis
             home-manager.nixosModules.home-manager
             {
               home-manager = {

@@ -144,6 +144,11 @@
       friendly-snippets
 
       {
+        plugin = nvim-surround;
+        config = toLua "require('nvim-surround').setup{}";
+      }
+
+      {
         plugin = harpoon;
         config = toLuaFile ./plugin/harpoon.lua;
       }

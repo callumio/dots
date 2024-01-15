@@ -131,6 +131,12 @@
         config = toLuaFile ./plugin/debugger.lua;
       }
 
+      {
+        plugin = pluginGit "fd35a46f4b7c1b244249266bdcb2da3814f01724"
+          "xiyaowong/transparent.nvim";
+        config = toLua "require('transparent').setup{}";
+      }
+
       nvim-dap-ui
       telescope-dap-nvim
       nvim-dap-virtual-text

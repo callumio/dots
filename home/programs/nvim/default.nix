@@ -74,6 +74,12 @@
 
       # LLM
       ollama
+
+      # Haskell
+      haskellPackages.haskell-debug-adapter
+      haskellPackages.haskell-language-server
+      haskellPackages.fourmolu
+      ghc
     ];
 
     defaultEditor = true;

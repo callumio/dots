@@ -44,6 +44,8 @@ null_ls.setup({
 		null_ls.builtins.formatting.nixfmt,
 		null_ls.builtins.code_actions.statix,
 		null_ls.builtins.diagnostics.statix,
+
+		null_ls.builtins.formatting.fourmolu,
 	},
 	on_attach = on_attach,
 })

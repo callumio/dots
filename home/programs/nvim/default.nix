@@ -156,6 +156,11 @@
       friendly-snippets
 
       {
+        plugin = hardtime-nvim;
+        config = toLua "require('hardtime').setup()";
+      }
+
+      {
         plugin = nvim-surround;
         config = toLua "require('nvim-surround').setup{}";
       }

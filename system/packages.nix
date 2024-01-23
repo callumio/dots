@@ -3,6 +3,10 @@
     fish.enable = true;
     nix-ld.enable = true;
     virt-manager.enable = true;
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+    };
   };
   programs.java.enable = true;
   programs.java.package = pkgs.jdk21;

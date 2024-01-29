@@ -211,6 +211,11 @@
       }
 
       {
+        plugin = gitsigns-nvim;
+        config = toLuaFile ./plugin/gitsigns.lua;
+      }
+
+      {
         plugin = nvim-treesitter.withPlugins (p: [
           p.tree-sitter-nix
           p.tree-sitter-vim

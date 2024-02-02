@@ -83,6 +83,10 @@
       haskellPackages.haskell-language-server
       haskellPackages.fourmolu
       ghc
+
+      # Docker
+      dockerfile-language-server-nodejs
+      docker-compose-language-service
     ];
 
     defaultEditor = true;

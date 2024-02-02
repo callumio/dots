@@ -58,3 +58,5 @@ lspconfig.tsserver.setup({
 	filetypes = { "typescript", "javascript", "typescriptreact", "typescript.tsx" },
 	cmd = { "typescript-language-server", "--stdio" },
 })
+lspconfig.dockerls.setup({ on_attach = on_attach, capabilities = capabilities })
+lspconfig.docker_compose_language_service.setup({ on_attach = on_attach, capabilities = capabilities })

@@ -48,6 +48,9 @@
       nodePackages.typescript
       nodePackages.typescript-language-server
 
+      # Javascript
+      eslint_d
+
       # Python
       nodePackages.pyright
 

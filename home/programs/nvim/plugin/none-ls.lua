@@ -48,6 +48,8 @@ null_ls.setup({
 		null_ls.builtins.formatting.fourmolu,
 
 		null_ls.builtins.formatting.eslint_d,
+
+		null_ls.builtins.formatting.rustfmt,
 	},
 	on_attach = on_attach,
 })

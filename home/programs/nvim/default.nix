@@ -40,6 +40,7 @@
       rust-analyzer
       cargo
       rustc
+      rustfmt
 
       # Go
       gopls

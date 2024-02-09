@@ -34,7 +34,7 @@ vim.o.mouse = "n"
 vim.o.splitright = true
 vim.o.splitbelow = true
 
-vim.opt.swapfile = true
+vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.cache/undo"
 vim.opt.undofile = true

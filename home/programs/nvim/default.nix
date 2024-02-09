@@ -33,7 +33,7 @@
   in {
     enable = true;
 
-    package = pkgs.neovim-nightly;
+    # package = pkgs.neovim-nightly;
 
     extraPackages = with pkgs; [
       # Rust

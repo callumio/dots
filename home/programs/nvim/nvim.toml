@@ -1,2 +1,4 @@
 [vim]
 any = true
+[lsp_on_attach]
+any = true

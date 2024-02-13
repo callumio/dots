@@ -16,6 +16,13 @@
       ${builtins.readFile file}
       EOF
     '';
+    toLuaFileLSP = file: ''
+      lua << EOF
+      ${leaders}
+      ${builtins.readFile ./plugin/lsp/lsp-keys.lua}
+      ${builtins.readFile file}
+      EOF
+    '';
 
     fromGit = ref: rev: repo:
       pkgs.vimUtils.buildVimPlugin {
@@ -42,6 +49,12 @@
       rustc
       rustfmt
 
+      # YAML
+      yaml-language-server
+
+      # JSON
+      nodePackages.vscode-json-languageserver
+
       # Go
       gopls
 
@@ -54,6 +67,7 @@
 
       # Python
       nodePackages.pyright
+      black
 
       # Util
       ripgrep
@@ -103,7 +117,33 @@
     plugins = with pkgs.vimPlugins; [
       {
         plugin = nvim-lspconfig;
-        config = toLuaFile ./plugin/lsp.lua;
+        config = toLuaFileLSP ./plugin/lsp/lsp.lua;
+      }
+
+      {
+        plugin = crates-nvim;
+        config = toLua "require('crates').setup()";
+      }
+
+      {
+        plugin = rustaceanvim;
+        config = toLuaFileLSP ./plugin/lsp/rust.lua;
+      }
+
+      {
+        plugin = haskell-tools-nvim;
+        config = toLuaFileLSP ./plugin/lsp/haskell.lua;
+      }
+
+      {
+        plugin = SchemaStore-nvim;
+        config = toLuaFileLSP ./plugin/lsp/schemastore.lua;
+      }
+
+      {
+        plugin = todo-comments-nvim;
+        config = toLua
+          "require('todo-comments').setup(); vim.api.nvim_set_keymap('n', '<leader>vtd', ':TodoTelescope<CR>', { noremap = true });";
       }
 
       {
@@ -196,12 +236,12 @@
 
       {
         plugin = none-ls-nvim;
-        config = toLuaFile ./plugin/none-ls.lua;
+        config = toLuaFile ./plugin/lsp/none-ls.lua;
       }
 
       {
         plugin = oil-nvim;
-        config = toLua "require('oil').setup()";
+        config = toLuaFile ./plugin/oil.lua;
       }
 
       {

@@ -42,8 +42,10 @@
       bind \\ split-window -v -c "#{pane_current_path}"
       bind c new-window -c "#{pane_current_path}"
 
-      bind-key -r f run-shell "tmux neww tmux-sessionizer"
+      bind-key -r s run-shell "tmux display-popup -E 'tmux-sessionizer -s'"
+      bind-key -r f run-shell "tmux display-popup -E 'tmux-sessionizer -p'"
       bind-key -r m run-shell "tmux switch-client -t main"
+      bind S choose-tree
 
       bind -r k select-pane -U
       bind -r j select-pane -D
@@ -55,7 +57,7 @@
   home.packages = [
     (pkgs.writeShellApplication {
       name = "tmux-sessionizer";
-      runtimeInputs = [ pkgs.tmux pkgs.fd pkgs.ghq ];
+      runtimeInputs = [ pkgs.tmux pkgs.ghq ];
       text = ''
         ${builtins.readFile ./tmux-sessionizer.sh}
       '';

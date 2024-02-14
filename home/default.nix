@@ -43,6 +43,9 @@
     cargo
     cargo-watch
     rustc
+    ripgrep
+    zig
+    ghc
     xh
   ];
 

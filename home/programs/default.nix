@@ -10,7 +10,6 @@
     ./rofi
     ./rbw
     ./firefox
-    ./nvim
     ./tmux
     ./alacritty
   ];

@@ -47,6 +47,7 @@
     zig
     ghc
     xh
+    inputs.nixvim.packages."x86_64-linux".default
   ];
 
   home.stateVersion = "23.11";

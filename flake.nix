@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,21 +17,27 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, hyprland, firefox-addons
-    , neovim-nightly-overlay, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, hyprland
+    , firefox-addons, ... }@inputs:
     let
       system = "x86_64-linux";
       stateVersion = "23.11";
+
+      unstable-packages = final: _prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          inherit (final) system;
+          config.allowUnfree = true;
+        };
+      };
+
       pkgs = import nixpkgs {
         inherit system;
         config = { allowUnfree = true; };
-        overlays = [ neovim-nightly-overlay.overlay ];
+        overlays = [ unstable-packages ];
       };
-      inherit (nixpkgs) lib;
     in {
       nixosConfigurations = {
         artemis = nixpkgs.lib.nixosSystem {

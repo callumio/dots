@@ -650,11 +650,11 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1709773466,
-        "narHash": "sha256-sJoAUllHxr/1cWZG8QyoVQGJba/KyUZ1hFS9TmyY9y4=",
+        "lastModified": 1709818764,
+        "narHash": "sha256-7BNpxVRh1+1i1/r9GgGMv2Q11NvZo/768cr4TOqZbeA=",
         "owner": "callumio",
         "repo": "nixvim",
-        "rev": "e7313acaaac4231f5a7353f2cb9eb6b6a54800c1",
+        "rev": "ef6862d91d45263b6cbd54d4a95c8a1dbd17e3d7",
         "type": "github"
       },
       "original": {

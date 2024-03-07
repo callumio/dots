@@ -112,7 +112,7 @@
       # Custom Workspaces
 
       workspace = name:web, on-created-empty: firefox
-      workspace = name:chat, on-created-empty: webcord
+      workspace = name:chat, on-created-empty: discord
       workspace = name:media, on-created-empty: spotify
 
 

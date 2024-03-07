@@ -20,7 +20,10 @@
   home.packages = with pkgs; [
     bitwarden
     wl-clipboard
-    webcord
+    (discord.override {
+      withOpenASAR = true;
+      withVencord = true;
+    })
     brightnessctl
     playerctl
     pavucontrol

@@ -21,8 +21,17 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix, hyprland
-    , firefox-addons, nixvim, ... }@inputs:
+  outputs =
+    { self
+    , nixpkgs
+    , nixpkgs-unstable
+    , home-manager
+    , sops-nix
+    , hyprland
+    , firefox-addons
+    , nixvim
+    , ...
+    }@inputs:
     let
       system = "x86_64-linux";
       stateVersion = "23.11";
@@ -39,7 +48,8 @@
         config = { allowUnfree = true; };
         overlays = [ unstable-packages ];
       };
-    in {
+    in
+    {
       nixosConfigurations = {
         artemis = nixpkgs.lib.nixosSystem {
           inherit system;

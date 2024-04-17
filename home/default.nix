@@ -43,9 +43,7 @@
     ghq
     gst
     udiskie
-    cargo
-    cargo-watch
-    rustc
+    rustup
     ripgrep
     zig
     ghc

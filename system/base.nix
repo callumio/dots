@@ -53,7 +53,7 @@
   users.users.c = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" ];
+    extraGroups = [ "wheel" "networkmanager" "libvirtd" "dialout" ];
     packages = with pkgs; [ ];
   };
 

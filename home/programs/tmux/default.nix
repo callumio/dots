@@ -11,6 +11,10 @@
       sensible
       yank
       {
+        plugin = onedark-theme;
+        extraConfig = "\n";
+      }
+      {
         plugin = resurrect;
         extraConfig = ''
           set -g @resurrect-strategy-vim 'session'
@@ -22,13 +26,9 @@
         plugin = continuum;
         extraConfig = ''
           set -g @continuum-restore 'on'
-          set -g @continuum-boot 'on'
+          set -g @continuum-boot 'off'
           set -g @continuum-save-interval '10'
         '';
-      }
-      {
-        plugin = onedark-theme;
-        extraConfig = "\n";
       }
     ];
 

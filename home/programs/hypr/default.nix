@@ -3,6 +3,7 @@
     enable = true;
     systemd.enable = true;
     xwayland.enable = true;
+    # TODO: move to nix config over text
     extraConfig = ''
       monitor=,preferred,auto,1
 
@@ -97,6 +98,7 @@
       bind = $mainMod, b, workspace, name:web
       bind = $mainMod, n, workspace, name:chat
       bind = $mainMod, m, workspace, name:media
+      bind = $mainMod, v, workspace, name:mail
 
       # Traverse Windows
       bind = $mainMod, h, movefocus, l
@@ -114,6 +116,7 @@
       workspace = name:web, on-created-empty: firefox
       workspace = name:chat, on-created-empty: discord
       workspace = name:media, on-created-empty: spotify
+      workspace = name:mail, on-created-empty: betterbird
 
 
       # Traverse Workspaces

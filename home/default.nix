@@ -18,7 +18,9 @@
   };
 
   home.packages = with pkgs; [
+    libsecret
     bitwarden
+    betterbird
     wl-clipboard
     (discord.override {
       withOpenASAR = true;

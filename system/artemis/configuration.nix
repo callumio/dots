@@ -21,6 +21,7 @@
     };
   };
 
+  programs.seahorse.enable = true;
   virtualisation = {
     podman = {
       enable = true;

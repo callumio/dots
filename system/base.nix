@@ -57,10 +57,7 @@
     packages = with pkgs; [ ];
   };
 
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  };
+  programs.hyprland = { enable = true; };
 
   programs.nm-applet.enable = true;
 

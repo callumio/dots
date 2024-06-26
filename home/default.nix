@@ -1,8 +1,7 @@
 { inputs, config, pkgs, ... }:
 
 {
-  imports =
-    [ inputs.hyprland.homeManagerModules.default ./programs ./services ];
+  imports = [ ./programs ./services ];
 
   programs.home-manager.enable = true;
 
@@ -55,5 +54,5 @@
     inputs.nixvim.packages."x86_64-linux".default # nixvim
   ];
 
-  home.stateVersion = "23.11";
+  home.stateVersion = "24.05";
 }

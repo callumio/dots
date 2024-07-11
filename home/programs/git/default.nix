@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.git = {
     enable = true;
 
@@ -7,18 +12,20 @@
     signing.key = "D382C4AFEECEAA90";
     signing.signByDefault = true;
 
-    ignores = [ ];
+    ignores = [];
 
-    includes = [{
-      condition = "gitdir:~/repos/projects.cs.nott.ac.uk/";
-      contents = {
-        user = {
-          email = "psycl6@nottingham.ac.uk";
-          signingKey = "5A944DF89B6F65AC";
+    includes = [
+      {
+        condition = "gitdir:~/repos/projects.cs.nott.ac.uk/";
+        contents = {
+          user = {
+            email = "psycl6@nottingham.ac.uk";
+            signingKey = "5A944DF89B6F65AC";
+          };
+          credential = {helper = "store";};
         };
-        credential = { helper = "store"; };
-      };
-    }];
+      }
+    ];
 
     extraConfig = {
       core = {
@@ -26,10 +33,10 @@
         autocrlf = false;
       };
 
-      init = { defaultBranch = "main"; };
+      init = {defaultBranch = "main";};
 
-      push = { autoSetupRemote = true; };
-      ghq = { root = "~/repos"; };
+      push = {autoSetupRemote = true;};
+      ghq = {root = "~/repos";};
     };
 
     diff-so-fancy.enable = true;

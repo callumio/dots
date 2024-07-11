@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.fish = {
     enable = true;
 
@@ -7,7 +12,7 @@
       trap __trap_exit_tmux EXIT
     '';
 
-    shellAliases = { v = "nvim"; };
+    shellAliases = {v = "nvim";};
 
     functions = {
       __trap_exit_tmux = {

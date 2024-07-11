@@ -1,5 +1,10 @@
-{ inputs, config, pkgs, ... }: {
-  imports = [ ./mako ];
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./mako];
   services = {
     mpris-proxy.enable = true;
     gpg-agent = {

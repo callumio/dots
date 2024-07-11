@@ -20,45 +20,52 @@
     sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, sops-nix
-    , firefox-addons, nixvim, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      stateVersion = "24.05";
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    home-manager,
+    sops-nix,
+    firefox-addons,
+    nixvim,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
+    stateVersion = "24.05";
 
-      unstable-packages = final: _prev: {
-        unstable = import inputs.nixpkgs-unstable {
-          inherit (final) system;
-          config.allowUnfree = true;
-        };
-      };
-
-      pkgs = import nixpkgs {
-        inherit system;
-        config = { allowUnfree = true; };
-        overlays = [ unstable-packages ];
-      };
-    in {
-      nixosConfigurations = {
-        artemis = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = { inherit inputs system; };
-          modules = [
-            ./system/configuration.nix
-            ./system/artemis
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                sharedModules = [ sops-nix.homeManagerModules.sops ];
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.c = import ./home;
-                extraSpecialArgs = { inherit inputs; };
-              };
-              nixpkgs = { inherit pkgs; };
-            }
-          ];
-        };
+    unstable-packages = final: _prev: {
+      unstable = import inputs.nixpkgs-unstable {
+        inherit (final) system;
+        config.allowUnfree = true;
       };
     };
+
+    pkgs = import nixpkgs {
+      inherit system;
+      config = {allowUnfree = true;};
+      overlays = [unstable-packages];
+    };
+  in {
+    nixosConfigurations = {
+      artemis = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {inherit inputs system;};
+        modules = [
+          ./system/configuration.nix
+          ./system/artemis
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              sharedModules = [sops-nix.homeManagerModules.sops];
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.c = import ./home;
+              extraSpecialArgs = {inherit inputs;};
+            };
+            nixpkgs = {inherit pkgs;};
+          }
+        ];
+      };
+    };
+  };
 }

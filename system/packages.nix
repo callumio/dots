@@ -1,4 +1,9 @@
-{ inputs, config, pkgs, ... }: {
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   programs = {
     fish.enable = true;
     nix-ld.enable = true;
@@ -33,6 +38,5 @@
     pkg-config
   ];
 
-  fonts.packages = with pkgs; [ nerdfonts meslo-lgs-nf ];
-
+  fonts.packages = with pkgs; [nerdfonts meslo-lgs-nf];
 }

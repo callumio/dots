@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.rbw = {
     enable = true;
     settings = {

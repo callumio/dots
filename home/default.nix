@@ -1,7 +1,10 @@
-{ inputs, config, pkgs, ... }:
-
 {
-  imports = [ ./programs ./services ];
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./programs ./services];
 
   programs.home-manager.enable = true;
 
@@ -11,9 +14,9 @@
   };
 
   sops = {
-    age.sshKeyPaths = [ "/home/c/.ssh/id_ed25519" ];
+    age.sshKeyPaths = ["/home/c/.ssh/id_ed25519"];
     defaultSopsFile = ./secrets.yaml;
-    secrets = { };
+    secrets = {};
   };
 
   home.packages = with pkgs; [

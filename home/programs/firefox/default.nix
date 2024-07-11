@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.firefox = {
     enable = true;
     policies = {
@@ -7,24 +12,26 @@
     };
 
     profiles.c = {
-      bookmarks = [{
-        name = "NixOS";
-        toolbar = true;
-        bookmarks = [
-          {
-            name = "Packages";
-            url = "https://search.nixos.org";
-          }
-          {
-            name = "Wiki";
-            url = "https://nixos.wiki";
-          }
-        ];
-      }];
+      bookmarks = [
+        {
+          name = "NixOS";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "Packages";
+              url = "https://search.nixos.org";
+            }
+            {
+              name = "Wiki";
+              url = "https://nixos.wiki";
+            }
+          ];
+        }
+      ];
 
-      containers = { };
+      containers = {};
 
-      settings = { };
+      settings = {};
 
       userChrome = "";
 

@@ -1,8 +1,13 @@
-{ inputs, config, pkgs, ... }: {
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
-    settings = { General = { Enable = "Source,Sink,Media,Socket"; }; };
+    settings = {General = {Enable = "Source,Sink,Media,Socket";};};
   };
 
   services = {
@@ -31,5 +36,5 @@
     };
   };
 
-  networking = { hostName = "artemis"; };
+  networking = {hostName = "artemis";};
 }

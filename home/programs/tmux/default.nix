@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.tmux = {
     enable = true;
     shortcut = "x";
@@ -57,7 +62,7 @@
   home.packages = [
     (pkgs.writeShellApplication {
       name = "tmux-sessionizer";
-      runtimeInputs = [ pkgs.tmux pkgs.ghq ];
+      runtimeInputs = [pkgs.tmux pkgs.ghq];
       text = ''
         ${builtins.readFile ./tmux-sessionizer.sh}
       '';

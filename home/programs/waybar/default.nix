@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.override {
@@ -11,10 +16,9 @@
         layer = "top";
         position = "bottom";
         height = 20;
-        modules-left = [ "hyprland/workspaces" "hyprland/submap" ];
-        modules-center = [ "hyprland/window" ];
-        modules-right =
-          [ "temperature" "wireplumber" "backlight" "battery" "clock" "tray" ];
+        modules-left = ["hyprland/workspaces" "hyprland/submap"];
+        modules-center = ["hyprland/window"];
+        modules-right = ["temperature" "wireplumber" "backlight" "battery" "clock" "tray"];
         clock = {
           tooltip = false;
           interval = 1;
@@ -32,19 +36,19 @@
           format = "{icon}  {capacity}%";
           format-good = "{icon}  {capacity}%";
           format-full = "  {capacity}%";
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = ["" "" "" "" ""];
           tooltip = false;
         };
         wireplumber = {
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
           format = "{icon}  {volume}%";
           format-muted = "";
-          format-icons = [ "" "" "" ];
+          format-icons = ["" "" ""];
           tooltip = false;
         };
         backlight = {
           format = "{icon} {percent}%";
-          format-icons = [ "" "" "" "" ];
+          format-icons = ["" "" "" ""];
           tooltip = false;
         };
         tray = {
@@ -56,7 +60,7 @@
         temperature = {
           thermal-zone = 0;
           format = "{icon} {temperatureC}°C";
-          format-icons = [ "" ];
+          format-icons = [""];
           interval = 30;
           tooltip = false;
         };

@@ -1,11 +1,14 @@
-{ inputs, config, pkgs, ... }:
-
 {
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   environment = {
-    variables = { EDITOR = "nvim"; };
-    sessionVariables = { NIXOS_OZONE_WL = "1"; };
+    variables = {EDITOR = "nvim";};
+    sessionVariables = {NIXOS_OZONE_WL = "1";};
 
-    shells = with pkgs; [ fish ];
+    shells = with pkgs; [fish];
 
     etc."greetd/environments".text = ''
       hyprland
@@ -53,11 +56,11 @@
   users.users.c = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "libvirtd" "dialout" ];
-    packages = with pkgs; [ ];
+    extraGroups = ["wheel" "networkmanager" "libvirtd" "dialout"];
+    packages = with pkgs; [];
   };
 
-  programs.hyprland = { enable = true; };
+  programs.hyprland = {enable = true;};
 
   programs.nm-applet.enable = true;
 
@@ -70,6 +73,5 @@
     options = "--delete-older-than 7d";
   };
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 }

@@ -1,4 +1,9 @@
-{ config, inputs, pkgs, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -13,7 +18,6 @@
         border_size = 1;
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa";
-
       };
 
       decoration = {
@@ -73,58 +77,61 @@
 
       "$mainMod" = "SUPER";
 
-      bind = [
-        "$mainMod, q, killactive"
-        "$mainMod SHIFT, q, exit"
-        "$mainMod, F, fullscreen"
-        "$mainMod SHIFT, f, togglefloating"
-        "$mainMod, d, exec, rofi -show drun"
-        "$mainMod, w, exec, rofi -show window"
-        "$mainMod, p, exec, rofi-rbw --no-folder"
-        "$mainMod, s, togglesplit"
-        "$mainMod SHIFT, r, exec, hyprctl reload"
-        "$mainMod, return, exec, alacritty -e tmux new -A -s main"
-        "$mainMod SHIFT, return, exec, [float; pin] alacritty -e tmux new -A -s main"
+      bind =
+        [
+          "$mainMod, q, killactive"
+          "$mainMod SHIFT, q, exit"
+          "$mainMod, F, fullscreen"
+          "$mainMod SHIFT, f, togglefloating"
+          "$mainMod, d, exec, rofi -show drun"
+          "$mainMod, w, exec, rofi -show window"
+          "$mainMod, p, exec, rofi-rbw --no-folder"
+          "$mainMod, s, togglesplit"
+          "$mainMod SHIFT, r, exec, hyprctl reload"
+          "$mainMod, return, exec, alacritty -e tmux new -A -s main"
+          "$mainMod SHIFT, return, exec, [float; pin] alacritty -e tmux new -A -s main"
 
-        "$mainMod, b, workspace, name:web"
-        "$mainMod, n, workspace, name:chat"
-        "$mainMod, m, workspace, name:media"
-        "$mainMod, v, workspace, name:mail"
+          "$mainMod, b, workspace, name:web"
+          "$mainMod, n, workspace, name:chat"
+          "$mainMod, m, workspace, name:media"
+          "$mainMod, v, workspace, name:mail"
 
-        "$mainMod SHIFT, b, movetoworkspace, name:web"
-        "$mainMod SHIFT, n, movetoworkspace, name:chat"
-        "$mainMod SHIFT, m, movetoworkspace, name:media"
-        "$mainMod SHIFT, v, movetoworkspace, name:mail"
+          "$mainMod SHIFT, b, movetoworkspace, name:web"
+          "$mainMod SHIFT, n, movetoworkspace, name:chat"
+          "$mainMod SHIFT, m, movetoworkspace, name:media"
+          "$mainMod SHIFT, v, movetoworkspace, name:mail"
 
-        "$mainMod CTRL, b, moveworkspacetomonitor, name:web current"
-        "$mainMod CTRL, n, moveworkspacetomonitor, name:chat current"
-        "$mainMod CTRL, m, moveworkspacetomonitor, name:media current"
-        "$mainMod CTRL, v, moveworkspacetomonitor, name:mail current"
-        "$mainMod CTRL, b, workspace, name:web"
-        "$mainMod CTRL, n, workspace, name:chat"
-        "$mainMod CTRL, m, workspace, name:media"
-        "$mainMod CTRL, v, workspace, name:mail"
+          "$mainMod CTRL, b, moveworkspacetomonitor, name:web current"
+          "$mainMod CTRL, n, moveworkspacetomonitor, name:chat current"
+          "$mainMod CTRL, m, moveworkspacetomonitor, name:media current"
+          "$mainMod CTRL, v, moveworkspacetomonitor, name:mail current"
+          "$mainMod CTRL, b, workspace, name:web"
+          "$mainMod CTRL, n, workspace, name:chat"
+          "$mainMod CTRL, m, workspace, name:media"
+          "$mainMod CTRL, v, workspace, name:mail"
 
-        "$mainMod, h, movefocus, l"
-        "$mainMod, l, movefocus, r"
-        "$mainMod, k, movefocus, u"
-        "$mainMod, j, movefocus, d"
-        "$mainMod SHIFT, h, movewindow, l"
-        "$mainMod SHIFT, l, movewindow, r"
-        "$mainMod SHIFT, k, movewindow, u"
-        "$mainMod SHIFT, j, movewindow, d"
-        ''SHIFT, Print, exec, grim -g "$(slurp)" - | wl-copy''
-        ", Print, exec, grim - | wl-copy"
-      ] ++ (builtins.concatLists (builtins.genList (x:
-        let ws = let c = (x + 1) / 10; in builtins.toString (x + 1 - (c * 10));
-        in [
-          "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
-          "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-          "$mainMod CTRL, ${ws}, moveworkspacetomonitor, ${
-            toString (x + 1)
-          } current"
-          "$mainMod CTRL, ${ws}, workspace, ${toString (x + 1)}"
-        ]) 10));
+          "$mainMod, h, movefocus, l"
+          "$mainMod, l, movefocus, r"
+          "$mainMod, k, movefocus, u"
+          "$mainMod, j, movefocus, d"
+          "$mainMod SHIFT, h, movewindow, l"
+          "$mainMod SHIFT, l, movewindow, r"
+          "$mainMod SHIFT, k, movewindow, u"
+          "$mainMod SHIFT, j, movewindow, d"
+          ''SHIFT, Print, exec, grim -g "$(slurp)" - | wl-copy''
+          ", Print, exec, grim - | wl-copy"
+        ]
+        ++ (builtins.concatLists (builtins.genList (x: let
+            ws = let c = (x + 1) / 10; in builtins.toString (x + 1 - (c * 10));
+          in [
+            "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
+            "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+            "$mainMod CTRL, ${ws}, moveworkspacetomonitor, ${
+              toString (x + 1)
+            } current"
+            "$mainMod CTRL, ${ws}, workspace, ${toString (x + 1)}"
+          ])
+          10));
 
       workspace = [
         "name:web, on-created-empty: firefox"
@@ -157,7 +164,7 @@
         "pkill mako & sleep 0.5 && mako"
       ];
 
-      exec-once = [ "blueman-tray" "mullvad-gui" "udiskie -t" ];
+      exec-once = ["blueman-tray" "mullvad-gui" "udiskie -t"];
     };
   };
 }

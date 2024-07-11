@@ -1,6 +1,9 @@
-{ inputs, config, pkgs, ... }:
-
 {
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hypr
     ./waybar
@@ -15,5 +18,5 @@
     ./direnv
   ];
 
-  programs = { gpg.enable = true; };
+  programs = {gpg.enable = true;};
 }

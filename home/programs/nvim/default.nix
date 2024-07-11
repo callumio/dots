@@ -1,4 +1,10 @@
-{ config, inputs, pkgs, lib, ... }: {
+{
+  config,
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.neovim = let
     leaders = ''
       vim.g.mapleader = ' '
@@ -142,7 +148,8 @@
 
       {
         plugin = todo-comments-nvim;
-        config = toLua
+        config =
+          toLua
           "require('todo-comments').setup(); vim.api.nvim_set_keymap('n', '<leader>vtd', ':TodoTelescope<CR>', { noremap = true });";
       }
 
@@ -169,13 +176,15 @@
       }
 
       {
-        plugin = pluginGit "951b163e55ce7639eb320c450bde9283c4fe968b"
+        plugin =
+          pluginGit "951b163e55ce7639eb320c450bde9283c4fe968b"
           "laytan/cloak.nvim";
         config = toLuaFile ./plugin/cloak.lua;
       }
 
       {
-        plugin = pluginGit "41ad952c8269fa7aa3a4b8a5abb44541cb628313"
+        plugin =
+          pluginGit "41ad952c8269fa7aa3a4b8a5abb44541cb628313"
           "David-Kunz/gen.nvim";
         config = toLuaFile ./plugin/gen.lua;
       }
@@ -186,7 +195,8 @@
       }
 
       {
-        plugin = pluginGit "fd35a46f4b7c1b244249266bdcb2da3814f01724"
+        plugin =
+          pluginGit "fd35a46f4b7c1b244249266bdcb2da3814f01724"
           "xiyaowong/transparent.nvim";
         config = toLua "require('transparent').setup{}";
       }
@@ -220,7 +230,8 @@
 
       {
         plugin = lualine-nvim;
-        config = toLua
+        config =
+          toLua
           "require('lualine').setup{options = {icons_enabled = true, theme = 'onedark', component_separators = '|', section_separators = ''}, sections = { lualine_a = { { 'buffers', } } }}";
       }
 
@@ -299,6 +310,5 @@
 
       vim-nix
     ];
-
   };
 }

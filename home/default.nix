@@ -26,7 +26,6 @@
     wl-clipboard
     (discord.override {
       withOpenASAR = true;
-      withVencord = true;
     })
     brightnessctl
     playerctl

@@ -25,7 +25,6 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sops-nix.url = "github:Mic92/sops-nix";
   };
 
   outputs = {
@@ -33,7 +32,6 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    sops-nix,
     firefox-addons,
     nixvim,
     stylix,
@@ -89,7 +87,6 @@
                     fish.enable = false;
                   };
                 }
-                sops-nix.homeManagerModules.sops
               ];
               useGlobalPkgs = true;
               useUserPackages = true;

@@ -13,12 +13,6 @@
     homeDirectory = "/home/c";
   };
 
-  sops = {
-    age.sshKeyPaths = ["/home/c/.ssh/id_ed25519"];
-    defaultSopsFile = ./secrets.yaml;
-    secrets = {};
-  };
-
   home.packages = with pkgs; [
     libsecret
     bitwarden

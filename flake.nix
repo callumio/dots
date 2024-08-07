@@ -4,7 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixvim.url = "github:callumio/nixvim";
+    nixvim = {
+      url = "github:callumio/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,6 +56,21 @@
         modules = [
           ./system/configuration.nix
           ./system/artemis
+          {
+            nix.settings = {
+              substituters = [
+                "https://cache.nixos.org"
+                "https://nix-community.cachix.org"
+                "https://callumio-public.cachix.org"
+              ];
+
+              trusted-public-keys = [
+                "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+                "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+                "callumio-public.cachix.org-1:VucOSl7vh44GdqcILwMIeHlI0ufuAnHAl8cO1U/7yhg="
+              ];
+            };
+          }
           home-manager.nixosModules.home-manager
           {
             home-manager = {

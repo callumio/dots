@@ -12,7 +12,7 @@
     signing.key = "D382C4AFEECEAA90";
     signing.signByDefault = true;
 
-    ignores = [];
+    ignores = [".direnv/"];
 
     includes = [
       {

@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.home-manager.follows = "home-manager";
+    };
     nixvim = {
       url = "github:callumio/nixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -31,6 +36,7 @@
     sops-nix,
     firefox-addons,
     nixvim,
+    stylix,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -56,6 +62,8 @@
         modules = [
           ./system/configuration.nix
           ./system/artemis
+          stylix.nixosModules.stylix
+
           {
             nix.settings = {
               substituters = [
@@ -71,10 +79,18 @@
               ];
             };
           }
+
           home-manager.nixosModules.home-manager
           {
             home-manager = {
-              sharedModules = [sops-nix.homeManagerModules.sops];
+              sharedModules = [
+                {
+                  stylix.targets = {
+                    fish.enable = false;
+                  };
+                }
+                sops-nix.homeManagerModules.sops
+              ];
               useGlobalPkgs = true;
               useUserPackages = true;
               users.c = import ./home;

@@ -9,7 +9,7 @@
     settings = {
       base_url = "https://vaultwarden.cleslie.uk";
       email = "cal@callumleslie.me";
-      pinentry = pkgs.gtk2;
+      pinentry = pkgs.pinentry-gnome3;
     };
   };
 }

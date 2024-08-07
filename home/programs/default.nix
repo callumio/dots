@@ -9,7 +9,6 @@
     ./waybar
     ./git
     ./fish
-    ./wpaperd
     ./rofi
     ./rbw
     ./firefox
@@ -18,5 +17,8 @@
     ./direnv
   ];
 
-  programs = {gpg.enable = true;};
+  programs = {
+    gpg.enable = true;
+    wpaperd.enable = true;
+  };
 }

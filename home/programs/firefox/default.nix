@@ -27,6 +27,16 @@
             }
           ];
         }
+        {
+          name = "News";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "Al Jazeera";
+              url = "https://aljazeera.com";
+            }
+          ];
+        }
       ];
 
       containers = {};

@@ -11,7 +11,7 @@
     };
     nixvim = {
       url = "github:callumio/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      #inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";

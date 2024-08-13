@@ -14,6 +14,10 @@
   boot.initrd.kernelModules = [];
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_6_10;
+  # boot.extraModprobeConfig = ''
+  #   options snd-hda-intel dmic_detect=0
+  # '';
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/5488764f-a50a-4ea2-ac8d-bfe565199018";

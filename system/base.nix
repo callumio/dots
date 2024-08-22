@@ -22,12 +22,14 @@
     printing.enable = true;
 
     udisks2.enable = true;
-    # pipewire = {
-    #   enable = true;
-    #   alsa.enable = true;
-    #   alsa.support32Bit = true;
-    #   pulse.enable = true;
-    # };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      wireplumber.enable = true;
+      jack.enable = true;
+    };
 
     thermald.enable = true;
     greetd = {
@@ -66,7 +68,7 @@
 
   sound.enable = true;
   #security.rtkit.enable = false;
-  hardware.pulseaudio.enable = true;
+  #hardware.pulseaudio.enable = true;
 
   nix.gc = {
     automatic = true;

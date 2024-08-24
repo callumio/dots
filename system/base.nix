@@ -66,7 +66,7 @@
 
   programs.nm-applet.enable = true;
 
-  sound.enable = true;
+  #sound.enable = true;
   #security.rtkit.enable = false;
   #hardware.pulseaudio.enable = true;
 

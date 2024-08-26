@@ -23,7 +23,7 @@
     })
     brightnessctl
     playerctl
-    pwvucontrol
+    pavucontrol
     tldr
     grc
     fd

@@ -17,21 +17,21 @@
 
   virtualisation.libvirtd.enable = true;
 
-  systemd.user.services.pipewire-pulse.path = [pkgs.pulseaudio];
+  #systemd.user.services.pipewire-pulse.path = [pkgs.pulseaudio];
   services = {
     dbus.enable = true;
     printing.enable = true;
 
     udisks2.enable = true;
     pipewire = {
-      enable = false;
+      enable = true;
       alsa = {
         enable = true;
         support32Bit = true;
       };
       pulse.enable = true;
       wireplumber.enable = true;
-      jack.enable = true;
+      #jack.enable = true;
     };
 
     thermald.enable = true;
@@ -69,9 +69,9 @@
 
   programs.nm-applet.enable = true;
 
-  sound.enable = true;
-  security.rtkit.enable = true;
-  hardware.pulseaudio.enable = true;
+  #sound.enable = true;
+  #security.rtkit.enable = true;
+  #hardware.pulseaudio.enable = true;
 
   nix.gc = {
     automatic = true;

@@ -40,7 +40,7 @@
           tooltip = false;
         };
         wireplumber = {
-          on-click = "${pkgs.pavucontrol}/bin/pwvucontrol";
+          on-click = "${pkgs.pwvucontrol}/bin/pwvucontrol";
           format = "{icon}  {volume}%";
           format-muted = "";
           format-icons = ["" "" ""];

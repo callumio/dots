@@ -65,6 +65,11 @@
     packages = with pkgs; [];
   };
 
+  nix.settings = {
+    trusted-users = ["c"];
+    experimental-features = ["nix-command" "flakes"];
+  };
+
   programs.hyprland = {enable = true;};
 
   programs.nm-applet.enable = true;
@@ -78,6 +83,4 @@
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
-
-  nix.settings.experimental-features = ["nix-command" "flakes"];
 }
